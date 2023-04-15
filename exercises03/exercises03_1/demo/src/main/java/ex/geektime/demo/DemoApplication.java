@@ -1,4 +1,4 @@
-package java.geektime.demo;
+package ex.geektime.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -7,13 +7,13 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
-
+import org.springframework.stereotype.Component;
 
 
 @SpringBootApplication
 @EnableBinding({ Source.class, Sink.class })
+@Component
 public class DemoApplication {
 
     @Autowired
@@ -21,9 +21,6 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        DemoApplication app = new DemoApplication();
-        app.sendMessage("Hello RabbitMQ");
-//        app.sendMessage("Hello Kafka");
     }
 
     public void sendMessage(String message) {
