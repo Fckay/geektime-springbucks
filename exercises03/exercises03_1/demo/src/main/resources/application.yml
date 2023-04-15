@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: my-topic
+          binder: rabbit
+#          binder: kafka
+        output:
+          destination: my-topic
+          binder: rabbit
+#          binder: kafka
+      rabbit:
+        bindings:
+          input:
+            consumer:
+              queueNameGroupOnly: true
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+      kafka:
+        binder:
+          brokers: localhost:9092
